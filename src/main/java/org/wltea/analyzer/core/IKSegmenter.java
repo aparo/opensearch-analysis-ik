@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -21,8 +23,6 @@
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
  */
-package org.wltea.analyzer.core;
-
 import org.wltea.analyzer.cfg.Configuration;
 
 import java.io.IOException;
@@ -49,7 +49,6 @@ public final class IKSegmenter {
 
 	/**
 	 * IK分词器构造函数
-	 * @param input
      */
 	public IKSegmenter(Reader input ,Configuration configuration){
 		this.input = input;
@@ -72,7 +71,6 @@ public final class IKSegmenter {
 	
 	/**
 	 * 初始化词典，加载子分词器实现
-	 * @return List<ISegmenter>
 	 */
 	private List<ISegmenter> loadSegmenters(){
 		List<ISegmenter> segmenters = new ArrayList<ISegmenter>(4);
@@ -88,7 +86,6 @@ public final class IKSegmenter {
 	/**
 	 * 分词，获取下一个词元
 	 * @return Lexeme 词元对象
-	 * @throws java.io.IOException
 	 */
 	public synchronized Lexeme next()throws IOException{
 		Lexeme l = null;
@@ -135,7 +132,6 @@ public final class IKSegmenter {
 
 	/**
      * 重置分词器到初始状态
-     * @param input
      */
 	public synchronized void reset(Reader input) {
 		this.input = input;

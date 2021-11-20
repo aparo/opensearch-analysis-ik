@@ -1,3 +1,5 @@
+package org.wltea.analyzer.dic;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -23,7 +25,6 @@
  *
  *
  */
-package org.wltea.analyzer.dic;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -51,9 +52,9 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.elasticsearch.SpecialPermission;
-import org.elasticsearch.core.PathUtils;
-import org.elasticsearch.plugin.analysis.ik.AnalysisIkPlugin;
+import org.opensearch.SpecialPermission;
+import org.opensearch.common.io.PathUtils;
+import org.opensearch.plugin.analysis.ik.AnalysisIkPlugin;
 import org.wltea.analyzer.cfg.Configuration;
 import org.apache.logging.log4j.Logger;
 import org.wltea.analyzer.help.ESPluginLoggerFactory;
@@ -139,8 +140,6 @@ public class Dictionary {
 	/**
 	 * 词典初始化 由于IK Analyzer的词典采用Dictionary类的静态方法进行词典初始化
 	 * 只有当Dictionary类被实际调用时，才会开始载入词典， 这将延长首次分词操作的时间 该方法提供了一个在应用加载阶段就初始化字典的手段
-	 * 
-	 * @return Dictionary
 	 */
 	public static synchronized void initial(Configuration cfg) {
 		if (singleton == null) {
@@ -300,12 +299,6 @@ public class Dictionary {
 	}
 
 
-	/**
-	 * 批量加载新词条
-	 * 
-	 * @param words
-	 *            Collection<String>词条列表
-	 */
 	public void addWords(Collection<String> words) {
 		if (words != null) {
 			for (String word : words) {

@@ -10,7 +10,7 @@ import org.apache.http.client.methods.HttpHead;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.logging.log4j.Logger;
-import org.elasticsearch.SpecialPermission;
+import org.opensearch.SpecialPermission;
 import org.wltea.analyzer.help.ESPluginLoggerFactory;
 
 public class Monitor implements Runnable {

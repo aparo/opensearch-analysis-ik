@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -23,8 +25,6 @@
  * 
  * 字符集识别工具类
  */
-package org.wltea.analyzer.core;
-
 /**
  *
  * 字符集识别工具类
@@ -44,7 +44,6 @@ class CharacterUtil {
 	
 	/**
 	 * 识别字符类型
-	 * @param input
 	 * @return int CharacterUtil定义的字符类型常量
 	 */
 	static int identifyCharType(char input){
@@ -83,8 +82,6 @@ class CharacterUtil {
 	
 	/**
 	 * 进行字符规格化（全角转半角，大写转小写处理）
-	 * @param input
-	 * @return char
 	 */
 	static char regularize(char input,boolean lowercase){
         if (input == 12288) {

@@ -1,3 +1,4 @@
+package org.wltea.analyzer.lucene;
 /**
  * IK 中文分词  版本 5.0.1
  * IK Analyzer release 5.0.1
@@ -22,7 +23,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.lucene;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Tokenizer;

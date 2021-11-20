@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -22,7 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
 
 import java.util.Arrays;
 
@@ -120,9 +121,6 @@ class LetterSegmenter implements ISegmenter {
 	/**
 	 * 处理数字字母混合输出
 	 * 如：windos2000 | linliangyi2005@gmail.com
-//	 * @param input
-	 * @param context
-	 * @return
 	 */
 	private boolean processMixLetter(AnalyzeContext context){
 		boolean needLock = false;
@@ -175,8 +173,6 @@ class LetterSegmenter implements ISegmenter {
 	
 	/**
 	 * 处理纯英文字母输出
-	 * @param context
-	 * @return
 	 */
 	private boolean processEnglishLetter(AnalyzeContext context){
 		boolean needLock = false;
@@ -221,8 +217,6 @@ class LetterSegmenter implements ISegmenter {
 	
 	/**
 	 * 处理阿拉伯数字输出
-	 * @param context
-	 * @return
 	 */
 	private boolean processArabicLetter(AnalyzeContext context){
 		boolean needLock = false;
@@ -270,8 +264,6 @@ class LetterSegmenter implements ISegmenter {
 
 	/**
 	 * 判断是否是字母连接符号
-	 * @param input
-	 * @return
 	 */
 	private boolean isLetterConnector(char input){
 		int index = Arrays.binarySearch(Letter_Connector, input);
@@ -280,8 +272,6 @@ class LetterSegmenter implements ISegmenter {
 	
 	/**
 	 * 判断是否是数字连接符号
-	 * @param input
-	 * @return
 	 */
 	private boolean isNumConnector(char input){
 		int index = Arrays.binarySearch(Num_Connector, input);

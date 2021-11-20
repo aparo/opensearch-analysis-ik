@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -22,7 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
 
 /**
  * IK词元对象 
@@ -146,7 +147,6 @@ public class Lexeme implements Comparable<Lexeme>{
 	}
 	/**
 	 * 获取词元在文本中的起始位置
-	 * @return int
 	 */
 	public int getBeginPosition(){
 		return offset + begin;
@@ -158,7 +158,6 @@ public class Lexeme implements Comparable<Lexeme>{
 
 	/**
 	 * 获取词元在文本中的结束位置
-	 * @return int
 	 */
 	public int getEndPosition(){
 		return offset + begin + length;
@@ -166,7 +165,6 @@ public class Lexeme implements Comparable<Lexeme>{
 	
 	/**
 	 * 获取词元的字符长度
-	 * @return int
 	 */
 	public int getLength(){
 		return this.length;
@@ -181,7 +179,6 @@ public class Lexeme implements Comparable<Lexeme>{
 	
 	/**
 	 * 获取词元的文本内容
-	 * @return String
 	 */
 	public String getLexemeText() {
 		if(lexemeText == null){
@@ -202,7 +199,6 @@ public class Lexeme implements Comparable<Lexeme>{
 
 	/**
 	 * 获取词元类型
-	 * @return int
 	 */
 	public int getLexemeType() {
 		return lexemeType;
@@ -210,7 +206,6 @@ public class Lexeme implements Comparable<Lexeme>{
 	
 	/**
 	 * 获取词元类型标示字符串
-	 * @return String
 	 */
 	public String getLexemeTypeString(){
 		switch(lexemeType) {
@@ -254,8 +249,8 @@ public class Lexeme implements Comparable<Lexeme>{
 	
 	/**
 	 * 合并两个相邻的词元
-	 * @param l
-	 * @param lexemeType
+	 * @param l lexeme
+	 * @param lexemeType lexemeType
 	 * @return boolean 词元是否成功合并
 	 */
 	public boolean append(Lexeme l , int lexemeType){
@@ -269,9 +264,6 @@ public class Lexeme implements Comparable<Lexeme>{
 	}
 	
 
-	/**
-	 * 
-	 */
 	public String toString(){
 		StringBuffer strbuf = new StringBuffer();
 		strbuf.append(this.getBeginPosition()).append("-").append(this.getEndPosition());

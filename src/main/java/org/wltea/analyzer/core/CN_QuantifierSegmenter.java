@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -22,8 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -138,7 +138,6 @@ class CN_QuantifierSegmenter implements ISegmenter{
 	
 	/**
 	 * 处理中文量词
-	 * @param context
 	 */
 	private void processCount(AnalyzeContext context){
 		// 判断是否需要启动量词扫描
@@ -204,7 +203,6 @@ class CN_QuantifierSegmenter implements ISegmenter{
 	
 	/**
 	 * 判断是否需要扫描量词
-	 * @return
 	 */
 	private boolean needCountScan(AnalyzeContext context){
 		if((nStart != -1 && nEnd != -1 ) || !countHits.isEmpty()){
@@ -225,7 +223,6 @@ class CN_QuantifierSegmenter implements ISegmenter{
 	
 	/**
 	 * 添加数词词元到结果集
-	 * @param context
 	 */
 	private void outputNumLexeme(AnalyzeContext context){
 		if(nStart > -1 && nEnd > -1){

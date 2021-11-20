@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -22,8 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
@@ -108,9 +108,7 @@ class AnalyzeContext {
 	
     /**
      * 根据context的上下文情况，填充segmentBuff 
-     * @param reader
      * @return 返回待分析的（有效的）字串长度
-     * @throws java.io.IOException
      */
     int fillBuffer(Reader reader) throws IOException{
     	int readCount = 0;
@@ -162,7 +160,6 @@ class AnalyzeContext {
     /**
      * 设置当前segmentBuff为锁定状态
      * 加入占用segmentBuff的子分词器名称，表示占用segmentBuff
-     * @param segmenterName
      */
 	void lockBuffer(String segmenterName){
 		this.buffLocker.add(segmenterName);
@@ -170,7 +167,6 @@ class AnalyzeContext {
 	
 	/**
 	 * 移除指定的子分词器名，释放对segmentBuff的占用
-	 * @param segmenterName
 	 */
 	void unlockBuffer(String segmenterName){
 		this.buffLocker.remove(segmenterName);
@@ -188,7 +184,6 @@ class AnalyzeContext {
 	/**
 	 * 判断当前segmentBuff是否已经用完
 	 * 当前执针cursor移至segmentBuff末端this.available - 1
-	 * @return
 	 */
 	boolean isBufferConsumed(){
 		return this.cursor == this.available - 1;
@@ -199,10 +194,9 @@ class AnalyzeContext {
 	 * 
 	 * 满足一下条件时，
 	 * 1.available == BUFF_SIZE 表示buffer满载
-	 * 2.buffIndex < available - 1 && buffIndex > available - BUFF_EXHAUST_CRITICAL表示当前指针处于临界区内
+	 * 2.buffIndex less available - 1 and buffIndex greater available - BUFF_EXHAUST_CRITICAL表示当前指针处于临界区内
 	 * 3.!context.isBufferLocked()表示没有segmenter在占用buffer
 	 * 要中断当前循环（buffer要进行移位，并再读取数据的操作）
-	 * @return
 	 */
 	boolean needRefillBuffer(){
 		return this.available == BUFF_SIZE 
@@ -220,7 +214,6 @@ class AnalyzeContext {
 	
 	/**
 	 * 向分词结果集添加词元
-	 * @param lexeme
 	 */
 	void addLexeme(Lexeme lexeme){
 		this.orgLexemes.addLexeme(lexeme);
@@ -228,8 +221,7 @@ class AnalyzeContext {
 	
 	/**
 	 * 添加分词结果路径
-	 * 路径起始位置 ---> 路径 映射表
-	 * @param path
+	 * 路径起始位置 ---) 路径 映射表
 	 */
 	void addLexemePath(LexemePath path){
 		if(path != null){
@@ -240,7 +232,6 @@ class AnalyzeContext {
 	
 	/**
 	 * 返回原始分词结果
-	 * @return
 	 */
 	QuickSortSet getOrgLexemes(){
 		return this.orgLexemes;
@@ -298,7 +289,6 @@ class AnalyzeContext {
 	
 	/**
 	 * 对CJK字符进行单字输出
-	 * @param index
 	 */
 	private void outputSingleCJK(int index){
 		if(CharacterUtil.CHAR_CHINESE == this.charTypes[index]){			
@@ -314,7 +304,6 @@ class AnalyzeContext {
 	 * 返回lexeme 
 	 * 
 	 * 同时处理合并
-	 * @return
 	 */
 	Lexeme getNextLexeme(){
 		//从结果集取出，并移除第一个Lexme

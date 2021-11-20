@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -22,8 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
-
 
 /**
  * Lexeme链（路径）
@@ -45,8 +45,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 
 	/**
 	 * 向LexemePath追加相交的Lexeme
-	 * @param lexeme
-	 * @return 
 	 */
 	boolean addCrossLexeme(Lexeme lexeme){
 		if(this.isEmpty()){
@@ -72,8 +70,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 	
 	/**
 	 * 向LexemePath追加不相交的Lexeme
-	 * @param lexeme
-	 * @return 
 	 */
 	boolean addNotCrossLexeme(Lexeme lexeme){
 		if(this.isEmpty()){
@@ -100,7 +96,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 	
 	/**
 	 * 移除尾部的Lexeme
-	 * @return
 	 */
 	Lexeme removeTail(){
 		Lexeme tail = this.pollLast();
@@ -118,8 +113,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 	
 	/**
 	 * 检测词元位置交叉（有歧义的切分）
-	 * @param lexeme
-	 * @return
 	 */
 	boolean checkCross(Lexeme lexeme){
 		return (lexeme.getBegin() >= this.pathBegin && lexeme.getBegin() < this.pathEnd)
@@ -136,7 +129,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 
 	/**
 	 * 获取Path的有效词长
-	 * @return
 	 */
 	int getPayloadLength(){
 		return this.payloadLength;
@@ -144,7 +136,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 	
 	/**
 	 * 获取LexemePath的路径长度
-	 * @return
 	 */
 	int getPathLength(){
 		return this.pathEnd - this.pathBegin;
@@ -153,7 +144,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 
 	/**
 	 * X权重（词元长度积）
-	 * @return
 	 */
 	int getXWeight(){
 		int product = 1;
@@ -167,7 +157,6 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 	
 	/**
 	 * 词元位置权重
-	 * @return
 	 */
 	int getPWeight(){
 		int pWeight = 0;

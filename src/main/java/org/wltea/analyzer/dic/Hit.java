@@ -1,3 +1,5 @@
+package org.wltea.analyzer.dic;
+
 /**
  * 
  * IK 中文分词  版本 5.0
@@ -23,7 +25,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.dic;
 
 /**
  * 表示一次词典匹配的命中

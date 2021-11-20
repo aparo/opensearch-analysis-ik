@@ -1,3 +1,4 @@
+package org.wltea.analyzer.lucene;
 /**
  * IK 中文分词  版本 5.0.1
  * IK Analyzer release 5.0.1
@@ -20,18 +21,14 @@
  * 源代码由林良益(linliangyi2005@gmail.com)提供
  * 版权声明 2012，乌龙茶工作室
  * provided by Linliangyi and copyright 2012 by Oolong studio
- * 
-
- * 
  */
-package org.wltea.analyzer.lucene;
 
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.env.Environment;
+import org.opensearch.common.settings.Settings;
+import org.opensearch.env.Environment;
 import org.wltea.analyzer.cfg.Configuration;
 import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;

@@ -1,13 +1,13 @@
-package org.elasticsearch.plugin.analysis.ik;
+package org.opensearch.plugin.analysis.ik;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.elasticsearch.index.analysis.AnalyzerProvider;
-import org.elasticsearch.index.analysis.IkAnalyzerProvider;
-import org.elasticsearch.index.analysis.IkTokenizerFactory;
-import org.elasticsearch.index.analysis.TokenizerFactory;
-import org.elasticsearch.indices.analysis.AnalysisModule;
-import org.elasticsearch.plugins.AnalysisPlugin;
-import org.elasticsearch.plugins.Plugin;
+import org.opensearch.index.analysis.AnalyzerProvider;
+import org.opensearch.index.analysis.IkAnalyzerProvider;
+import org.opensearch.index.analysis.IkTokenizerFactory;
+import org.opensearch.index.analysis.TokenizerFactory;
+import org.opensearch.indices.analysis.AnalysisModule;
+import org.opensearch.plugins.AnalysisPlugin;
+import org.opensearch.plugins.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;

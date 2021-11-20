@@ -1,3 +1,4 @@
+package org.wltea.analyzer.core;
 
 /**
  * IK 中文分词  版本 5.0
@@ -23,8 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
-
 import org.wltea.analyzer.dic.Dictionary;
 import org.wltea.analyzer.dic.Hit;
 

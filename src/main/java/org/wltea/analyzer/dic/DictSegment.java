@@ -1,3 +1,5 @@
+package org.wltea.analyzer.dic;
+
 /**
  * 
  * IK 中文分词  版本 5.0
@@ -23,7 +25,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.dic;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -75,8 +76,6 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 匹配词段
-	 * @param charArray
-	 * @return Hit
 	 */
 	Hit match(char[] charArray){
 		return this.match(charArray , 0 , charArray.length , null);
@@ -84,10 +83,6 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 匹配词段
-	 * @param charArray
-	 * @param begin
-	 * @param length
-	 * @return Hit 
 	 */
 	Hit match(char[] charArray , int begin , int length){
 		return this.match(charArray , begin , length , null);
@@ -95,11 +90,6 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 匹配词段
-	 * @param charArray
-	 * @param begin
-	 * @param length
-	 * @param searchHit
-	 * @return Hit 
 	 */
 	Hit match(char[] charArray , int begin , int length , Hit searchHit){
 		
@@ -133,7 +123,7 @@ class DictSegment implements Comparable<DictSegment>{
 
 		}else if(segmentMap != null){
 			//在map中查找
-			ds = (DictSegment)segmentMap.get(keyChar);
+			ds = segmentMap.get(keyChar);
 		}
 		
 		//STEP2 找到DictSegment，判断词的匹配状态，是否继续递归，还是返回结果
@@ -164,7 +154,6 @@ class DictSegment implements Comparable<DictSegment>{
 
 	/**
 	 * 加载填充词典片段
-	 * @param charArray
 	 */
 	void fillSegment(char[] charArray){
 		this.fillSegment(charArray, 0 , charArray.length , 1); 
@@ -172,7 +161,6 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 屏蔽词典中的一个词
-	 * @param charArray
 	 */
 	void disableSegment(char[] charArray){
 		this.fillSegment(charArray, 0 , charArray.length , 0); 
@@ -180,10 +168,6 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 加载填充词典片段
-	 * @param charArray
-	 * @param begin
-	 * @param length
-	 * @param enabled
 	 */
 	private synchronized void fillSegment(char[] charArray , int begin , int length , int enabled){
 		//获取字典表中的汉字对象
@@ -213,9 +197,8 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 查找本节点下对应的keyChar的segment	 * 
-	 * @param keyChar
+	 * @param keyChar keyChar
 	 * @param create  =1如果没有找到，则创建新的segment ; =0如果没有找到，不创建，返回null
-	 * @return
 	 */
 	private DictSegment lookforSegment(Character keyChar ,  int create){
 		
@@ -261,7 +244,7 @@ class DictSegment implements Comparable<DictSegment>{
 			//获取Map容器，如果Map未创建,则创建Map
 			Map<Character , DictSegment> segmentMap = getChildrenMap();
 			//搜索Map
-			ds = (DictSegment)segmentMap.get(keyChar);
+			ds = segmentMap.get(keyChar);
 			if(ds == null && create == 1){
 				//构造新的segment
 				ds = new DictSegment(keyChar);
@@ -303,7 +286,7 @@ class DictSegment implements Comparable<DictSegment>{
 	
 	/**
 	 * 将数组中的segment迁移到Map中
-	 * @param segmentArray
+	 * @param segmentArray segmentArray
 	 */
 	private void migrate(DictSegment[] segmentArray , Map<Character , DictSegment> segmentMap){
 		for(DictSegment segment : segmentArray){
@@ -315,7 +298,7 @@ class DictSegment implements Comparable<DictSegment>{
 
 	/**
 	 * 实现Comparable接口
-	 * @param o
+	 * @param o o
 	 * @return int
 	 */
 	public int compareTo(DictSegment o) {

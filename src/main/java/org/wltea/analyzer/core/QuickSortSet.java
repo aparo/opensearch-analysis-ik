@@ -1,3 +1,5 @@
+package org.wltea.analyzer.core;
+
 /**
  * IK 中文分词  版本 5.0
  * IK Analyzer release 5.0
@@ -22,8 +24,6 @@
  * provided by Linliangyi and copyright 2012 by Oolong studio
  * 
  */
-package org.wltea.analyzer.core;
-
 /**
  * IK分词器专用的Lexem快速排序集合
  */
@@ -41,7 +41,6 @@ class QuickSortSet {
 	
 	/**
 	 * 向链表集合添加词元
-	 * @param lexeme
 	 */
 	boolean addLexeme(Lexeme lexeme){
 		Cell newCell = new Cell(lexeme); 
@@ -93,7 +92,6 @@ class QuickSortSet {
 	
 	/**
 	 * 返回链表头部元素
-	 * @return
 	 */
 	Lexeme peekFirst(){
 		if(this.head != null){
@@ -104,7 +102,6 @@ class QuickSortSet {
 	
 	/**
 	 * 取出链表集合的第一个元素
-	 * @return Lexeme
 	 */
 	Lexeme pollFirst(){
 		if(this.size == 1){
@@ -125,7 +122,6 @@ class QuickSortSet {
 	
 	/**
 	 * 返回链表尾部元素
-	 * @return
 	 */
 	Lexeme peekLast(){
 		if(this.tail != null){
@@ -136,7 +132,6 @@ class QuickSortSet {
 	
 	/**
 	 * 取出链表集合的最后一个元素
-	 * @return Lexeme
 	 */
 	Lexeme pollLast(){
 		if(this.size == 1){
@@ -159,7 +154,6 @@ class QuickSortSet {
 	
 	/**
 	 * 返回集合大小
-	 * @return
 	 */
 	int size(){
 		return this.size;
@@ -167,15 +161,13 @@ class QuickSortSet {
 	
 	/**
 	 * 判断集合是否为空
-	 * @return
 	 */
 	boolean isEmpty(){
 		return this.size == 0;
 	}
 	
 	/**
-	 * 返回lexeme链的头部
-	 * @return
+	 * @return 返回lexeme链的头部
 	 */
 	Cell getHead(){
 		return this.head;
