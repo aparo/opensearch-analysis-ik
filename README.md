@@ -3,7 +3,7 @@ IK Analysis for OpenSearch
 
 This is a port of [medcl's IK Analysis](https://github.com/medcl/elasticsearch-analysis-ik).
 
-The IK Analysis plugin integrates Lucene IK analyzer (http://code.google.com/p/ik-analyzer/) into opensearch, support customized dictionary.
+The IK Analysis plugin integrates Lucene IK analyzer (http://code.google.com/p/ik-analyzer/) into OpenSearch, and support customized dictionary.
 
 Analyzer: `ik_smart` , `ik_max_word` , Tokenizer: `ik_smart` , `ik_max_word`
 
@@ -13,6 +13,8 @@ Install
 | OS    | Command |
 | ----- | ------- |
 | 1.1.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/1.1.0/opensearch-analisys-ik-1.1.0.zip` |
+| 1.2.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/1.2.0/opensearch-analisys-ik-1.2.0.zip` |
+| 1.2.2  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/1.2.2/opensearch-analisys-ik-1.2.2.zip` |
 
 
 
