@@ -49,7 +49,7 @@ allprojects {
 }
 
 opensearchplugin {
-  name = 'opensearch-analisys-ik'
+  name = 'opensearch-analysis-ik'
   description = 'IK Analysis for OpenSearch'
   classname = 'org.opensearch.plugin.analysis.ik.AnalysisIkPlugin'
   licenseFile = rootProject.file('LICENSE.txt')
@@ -92,16 +92,16 @@ throw new Exception('Missing property GITHUB_TOKEN')
 }
 
 // check if zip file is there
-if(file("build/distributions/opensearch-analisys-ik-${version}.zip").exists()){
+if(file("build/distributions/opensearch-analysis-ik-${version}.zip").exists()){
   // rename zip file
   def currentVersion = version.replace('-SNAPSHOT', '')
-  def filename = "build/distributions/opensearch-analisys-ik-${version}.zip"
-  Files.copy(file("build/distributions/opensearch-analisys-ik-${version}.zip").toPath(), file(filename).toPath())
+  def filename = "build/distributions/opensearch-analysis-ik-${version}.zip"
+  Files.copy(file("build/distributions/opensearch-analysis-ik-${version}.zip").toPath(), file(filename).toPath())
 
   // configuration
   githubRelease {
       owner 'aparo'
-      repo 'opensearch-analisys-ik'
+      repo 'opensearch-analysis-ik'
       token System.getProperty('GITHUB_TOKEN')
       tagName currentVersion
       releaseName currentVersion
