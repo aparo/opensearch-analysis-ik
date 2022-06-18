@@ -19,7 +19,7 @@ Install
 | 1.3.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/1.3.0/opensearch-analisys-ik-1.3.0.zip` |
 | 1.3.1  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/1.3.1/opensearch-analisys-ik-1.3.1.zip` |
 | 1.3.2  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/1.3.2/opensearch-analisys-ik-1.3.2.zip` |
-| 2.0.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.0.0/opensearch-analisys-ik-2.0.0.zip` |
+| 2.0.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.0.0.1/opensearch-analisys-ik-2.0.0.1.zip` |
 
 
 #### Quick Example
