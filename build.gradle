@@ -3,7 +3,7 @@ import org.opensearch.gradle.test.RestIntegTestTask
 
 buildscript {
     ext {
-        opensearch_version = "2.0.0"
+        opensearch_version = "2.0.1"
     }
 
     repositories {
@@ -31,7 +31,7 @@ repositories {
 }
 
 group = 'org.opensearch.plugin'
-version = "${opensearchVersion}.1"
+version = "${opensearchVersion}"
 
 apply plugin: 'java'
 apply plugin: 'idea'
