@@ -31,7 +31,7 @@ repositories {
 }
 
 group = 'org.opensearch.plugin'
-version = "${opensearchVersion}.0"
+version = "${opensearchVersion}"
 
 apply plugin: 'java'
 apply plugin: 'idea'
