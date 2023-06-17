@@ -3,7 +3,7 @@ import org.opensearch.gradle.test.RestIntegTestTask
 
 buildscript {
     ext {
-        opensearchVersion = "2.7.0"
+        opensearchVersion = "2.8.0"
     }
 
     repositories {
