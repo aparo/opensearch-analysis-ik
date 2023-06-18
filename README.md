@@ -159,15 +159,15 @@ or `{plugins}/opensearch-analysis-ik-*/config/IKAnalyzer.cfg.xml`
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<comment>IK Analyzer 扩展配置</comment>
-	<!--用户可以在这里配置自己的扩展字典 -->
-	<entry key="ext_dict">custom/mydict.dic;custom/single_word_low_freq.dic</entry>
-	 <!--用户可以在这里配置自己的扩展停止词字典-->
-	<entry key="ext_stopwords">custom/ext_stopword.dic</entry>
- 	<!--用户可以在这里配置远程扩展字典 -->
-	<entry key="remote_ext_dict">location</entry>
- 	<!--用户可以在这里配置远程扩展停止词字典-->
-	<entry key="remote_ext_stopwords">http://xxx.com/xxx.dic</entry>
+    <comment>IK Analyzer 扩展配置</comment>
+    <!--用户可以在这里配置自己的扩展字典 -->
+    <entry key="ext_dict">custom/mydict.dic;custom/single_word_low_freq.dic</entry>
+     <!--用户可以在这里配置自己的扩展停止词字典-->
+    <entry key="ext_stopwords">custom/ext_stopword.dic</entry>
+     <!--用户可以在这里配置远程扩展字典 -->
+    <entry key="remote_ext_dict">location</entry>
+     <!--用户可以在这里配置远程扩展停止词字典-->
+    <entry key="remote_ext_stopwords">http://xxx.com/xxx.dic</entry>
 </properties>
 ```
 
@@ -176,10 +176,10 @@ or `{plugins}/opensearch-analysis-ik-*/config/IKAnalyzer.cfg.xml`
 目前该插件支持热更新 IK 分词，通过上文在 IK 配置文件中提到的如下配置
 
 ```xml
- 	<!--用户可以在这里配置远程扩展字典 -->
-	<entry key="remote_ext_dict">location</entry>
- 	<!--用户可以在这里配置远程扩展停止词字典-->
-	<entry key="remote_ext_stopwords">location</entry>
+     <!--用户可以在这里配置远程扩展字典 -->
+    <entry key="remote_ext_dict">location</entry>
+     <!--用户可以在这里配置远程扩展停止词字典-->
+    <entry key="remote_ext_stopwords">location</entry>
 ```
 
 其中 `location` 是指一个 url，比如 `http://yoursite.com/getCustomDict`，该请求只需满足以下两点即可完成分词热更新。

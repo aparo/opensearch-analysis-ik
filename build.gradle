@@ -1,9 +1,72 @@
-import java.nio.file.Files
 import org.opensearch.gradle.test.RestIntegTestTask
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'opensearch.opensearchplugin'
+apply plugin: 'opensearch.yaml-rest-test'
+apply plugin: 'opensearch.pluginzip'
+
+def pluginName = 'opensearch-analysis-ik'
+def pluginDescription = 'IK Analysis for OpenSearch'
+def projectPath = 'org.opensearch'
+def pathToPlugin = 'plugin.analysis.ik'
+def pluginClassName = 'AnalysisIkPlugin'
+group = "io.megl"
+tasks.register("preparePluginPathDirs") {
+    mustRunAfter clean
+    doLast {
+        def newPath = pathToPlugin.replace(".", "/")
+        mkdir "src/main/java/org/opensearch/$newPath"
+        mkdir "src/test/java/org/opensearch/$newPath"
+        mkdir "src/yamlRestTest/java/org/opensearch/$newPath"
+    }
+}
+
+publishing {
+    publications {
+        pluginZip(MavenPublication) { publication ->
+            pom {
+              name = pluginName
+              description = pluginDescription
+              licenses {
+                license {
+                  name = "The Apache License, Version 2.0"
+                  url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+              }
+              developers {
+                developer {
+                  name = "OpenSearch"
+                  url = "https://github.com/opensearch-project/opensearch-plugin-template-java"
+                }
+              }
+            }
+        }
+    }
+}
+
+opensearchplugin {
+    name pluginName
+    description pluginDescription
+    classname "${projectPath}.${pathToPlugin}.${pluginClassName}"
+    licenseFile rootProject.file('LICENSE.txt')
+    noticeFile rootProject.file('NOTICE.txt')
+}
+
+// This requires an additional Jar not published as part of build-tools
+loggerUsageCheck.enabled = false
+
+// No need to validate pom, as we do not upload to maven/sonatype
+validateNebulaPom.enabled = false
+forbiddenApis.ignoreFailures = true
+dependencyLicenses.enabled = false
+testingConventions.enabled = false
+licenseHeaders.enabled = false
+thirdPartyAudit.enabled = false
 
 buildscript {
     ext {
-        opensearchVersion = "2.8.0"
+        opensearch_version = System.getProperty("opensearch.version", "2.8.0")
     }
 
     repositories {
@@ -14,107 +77,24 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.opensearch.gradle:build-tools:${opensearchVersion}"
-        classpath "com.github.breadmoirai:github-release:2.3.7"
+        classpath "org.opensearch.gradle:build-tools:${opensearch_version}"
     }
 }
-
 
 repositories {
-  mavenCentral()
+    mavenLocal()
+    maven { url "https://aws.oss.sonatype.org/content/repositories/snapshots" }
+    mavenCentral()
+    maven { url "https://plugins.gradle.org/m2/" }
 }
 
-group = 'org.opensearch.plugin'
-version = "${opensearchVersion}"
-
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'opensearch.opensearchplugin'
-apply plugin: 'opensearch.testclusters'
-apply plugin: 'opensearch.yaml-rest-test'
-apply plugin: 'opensearch.pluginzip'
-apply plugin: "com.github.breadmoirai.github-release"
-
-allprojects {
-     plugins.withId('java') {
-        targetCompatibility = JavaVersion.VERSION_11
-        sourceCompatibility = JavaVersion.VERSION_11
-    }
-}
-
-opensearchplugin {
-  name = 'opensearch-analysis-ik'
-  description = 'IK Analysis for OpenSearch'
-  classname = 'org.opensearch.plugin.analysis.ik.AnalysisIkPlugin'
-  licenseFile = rootProject.file('LICENSE.txt')
-  noticeFile = rootProject.file('NOTICE.txt')
-}
-// This requires an additional Jar not published as part of build-tools
-loggerUsageCheck.enabled = false
-
-// No need to validate pom, as we do not upload to maven/sonatype
-validateNebulaPom.enabled = false
-
-// In this section you declare the dependencies for your production and test code
 dependencies {
-
-//  implementation 'org.apache.httpcomponents:httpcomponents-client:4.5.13'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
-    implementation 'org.apache.httpcomponents:httpcore:4.4.12'
-  //runtimeOnly 'org.apache.logging.log4j:log4j-api:2.3'
-/*
-  testCompileOnly 'org.powermock:powermock-api-mockito:1.6.2'
-  testCompileOnly 'nl.jqno.equalsverifier:equalsverifier:1.7.5'
-  testCompileOnly 'com.openpojo:openpojo:0.8.1'
-*/
-}
-
-bundlePlugin {
-    from('config') {
-        into 'config/'
-    }
-}
-
-// ignore javadoc warnings for now
-tasks.withType(Javadoc) {
-  options.addStringOption('Xdoclint:none', '-quiet')
-}
-
-
-if (!System.getProperty('GITHUB_TOKEN', '')) {
-throw new Exception('Missing property GITHUB_TOKEN')
-}
-
-// check if zip file is there
-if(file("build/distributions/opensearch-analysis-ik-${version}.zip").exists()){
-  // rename zip file
-  def currentVersion = version.replace('-SNAPSHOT', '')
-  def filename = "build/distributions/opensearch-analysis-ik-${version}.zip"
-  Files.copy(file("build/distributions/opensearch-analysis-ik-${version}.zip").toPath(), file(filename).toPath())
-
-  // configuration
-  githubRelease {
-      owner 'aparo'
-      repo 'opensearch-analysis-ik'
-      token System.getProperty('GITHUB_TOKEN')
-      tagName currentVersion
-      releaseName currentVersion
-      targetCommitish = 'main'
-      body ""
-  }
-
-
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.15'
 }
 
 test {
-     dependsOn 'cleanTest'
-     include '**/*Tests.class'
-   //To enable this fail fast behavior so even a one unit test fail it keeps running 
-        failFast = true
-
-      // Give a different location to the gradle html reports in a folder called gradlehtmlReports
-    reports.html.enabled = true
-    reports.html.setDestination(file("$projectDir/gradlehtmlReports"))
+    include '**/*Tests.class'
 }
 
 task integTest(type: RestIntegTestTask) {
@@ -138,6 +118,24 @@ testClusters.integTest {
     plugin(project.tasks.bundlePlugin.archiveFile)
 }
 
+bundlePlugin {
+    from('config') {
+        into 'config'
+    }
+}
+
 run {
     useCluster testClusters.integTest
 }
+
+// updateVersion: Task to auto update version to the next development iteration
+task updateVersion {
+    onlyIf { System.getProperty('newVersion') }
+    doLast {
+        ext.newVersion = System.getProperty('newVersion')
+        println "Setting version to ${newVersion}."
+         // String tokenization to support -SNAPSHOT
+        ant.replaceregexp(file:'build.gradle', match: '"opensearch.version", "\\d.*"', replace: '"opensearch.version", "' + newVersion.tokenize('-')[0] + '-SNAPSHOT"', flags:'g', byline:true)
+    }
+}
+
