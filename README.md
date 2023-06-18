@@ -30,7 +30,7 @@ Install
 | 2.5.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.5.0/opensearch-analisys-ik-2.5.0.zip` |
 | 2.6.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.6.0/opensearch-analisys-ik-2.6.0.zip` |
 | 2.7.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.7.0/opensearch-analisys-ik-2.7.0.zip` |
-| 2.8.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.8.0/opensearch-analisys-ik-2.8.0.zip` |
+| 2.8.0  | `bin/opensearch-plugin install https://github.com/aparo/opensearch-analysis-ik/releases/download/2.8.0/opensearch-analisys-ik.zip` |
 
 # Note
 For version 2.0.0 or below, there is a bug in coping the final config data. After having installed the plugin please copy the *config* dir in plugin directory.
