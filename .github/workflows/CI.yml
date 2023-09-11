@@ -1,4 +1,4 @@
-name: Build and Test Plugin Template
+name: Build and Test Plugin
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
           - windows-latest
         java:
           - 17
-    name: Build and Test Plugin Template
+    name: Build and Test Plugin
     runs-on: ${{ matrix.os }}
 
     steps:
