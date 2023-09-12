@@ -139,3 +139,6 @@ task updateVersion {
     }
 }
 
+javadoc {
+    options.encoding = 'UTF-8'
+}
