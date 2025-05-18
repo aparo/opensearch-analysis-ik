@@ -6,9 +6,9 @@ public class Sleep {
 
     private static final Logger logger = ESPluginLoggerFactory.getLogger(Sleep.class.getName());
 
-    public enum Type {MSEC, SEC, MIN, HOUR}
-
-    ;
+    public enum Type {
+        MSEC, SEC, MIN, HOUR
+    };
 
     public static void sleep(Type type, int num) {
         try {
@@ -33,6 +33,5 @@ public class Sleep {
             logger.error(e.getMessage(), e);
         }
     }
-
 
 }

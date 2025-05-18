@@ -25,7 +25,6 @@ public class PrefixPluginLogger extends ExtendedLoggerWrapper {
     PrefixPluginLogger(ExtendedLogger logger, String name, String prefix) {
         super(logger, name, (MessageFactory) null);
         String actualPrefix = prefix == null ? "" : prefix;
-        WeakHashMap<String, Marker> var6 = markers;
         MarkerManager.Log4jMarker actualMarker;
         synchronized (markers) {
             MarkerManager.Log4jMarker maybeMarker = (MarkerManager.Log4jMarker) markers.get(actualPrefix);

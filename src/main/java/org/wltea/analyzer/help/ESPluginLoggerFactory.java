@@ -22,6 +22,8 @@ public class ESPluginLoggerFactory {
     }
 
     static public Logger getLogger(String prefix, Logger logger) {
-        return (prefix != null && prefix.length() != 0 ? new PrefixPluginLogger((ExtendedLogger)logger, logger.getName(), prefix) : logger);
+        return (Logger) (prefix != null && prefix.length() != 0
+                ? new PrefixPluginLogger((ExtendedLogger) logger, logger.getName(), prefix)
+                : logger);
     }
 }
